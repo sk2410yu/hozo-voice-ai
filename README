@@ -1,0 +1,91 @@
+了解。あちこちの修正を追いかけるのは確かにしんどいな。
+これまでの修正をすべて反映した、**「これさえあればGitHubに即上げできる」** 決定版の **`README.md`** 全文を一つのコードブロックにまとめた。
+
+これをコピーしてプロジェクトのルートに `README.md` という名前で保存すれば完了だ。
+
+---
+
+```markdown
+# 🎙️ Hozo Voice-Driven Ontology Architect (2026 MVP)
+
+**「法造 (Hozo)」の理論的厳密さと、LLM の柔軟なセマンティック抽出を統合した、次世代の知識モデル構築支援システム。**
+
+ユーザーの曖昧な音声指示から知識モデル（オントロジー）を動的に構築・編集します。2026年時点の最新スタックに最適化済み。
+
+---
+
+## 🌟 プロジェクト概要
+本システムは、概念間に「基本概念（Basic）」と「ロール概念（Role）」という法造特有の区別を持たせ、AIが文脈を判断して構造化を行います。音声やテキスト入力を通じて、知識をレイヤーごとに安全に積み上げることが可能です。
+
+
+
+## 🚀 主な機能
+- **音声・テキスト駆動モデリング**: 自然言語から操作命令（JSON）を即座に抽出。
+- **法造ロジックの継承**: 「基本概念」と「文脈依存のロール概念」を厳密に分類。
+- **動的グラフ表示**: Graphviz による階層構造（isa関係）のリアルタイム可視化。
+- **レイヤー権限管理**: `LOCKED`（基盤層）と `OPEN`（記述層）を設け、意図しない破壊を防止。
+- **AI サジェスト機能**: 登録された概念に基づき、次に追加すべき概念をAIが提案。
+- **自動永続化**: Pydantic V2 を採用した堅牢なスキーマで JSON へ自動保存。
+
+## 🛠️ 技術スタック
+- **UI**: Streamlit
+- **AI Engine**: Google Gemini 2.5 Flash / 1.5 Flash (自動探索ロジック搭載)
+- **SDK**: `google-genai` (2026年最新世代 SDK)
+- **Data Model**: Pydantic V2 (`model_dump` 対応)
+- **Visualization**: Graphviz
+
+## 📦 セットアップ
+
+### 1. 依存ライブラリのインストール
+```bash
+pip install -r requirements.txt
+
+```
+
+### 2. APIキーの設定
+
+ルートディレクトリに `.env` ファイルを作成し、APIキーを記述してください。
+
+```text
+GOOGLE_API_KEY=your_gemini_api_key_here
+
+```
+
+### 3. アプリケーションの起動
+
+```bash
+streamlit run app.py
+
+```
+
+## 📂 フォルダ構造
+
+```text
+hozo-voice-ai/
+├── app.py              # メイン UI & 統合ロジック
+├── requirements.txt    # 依存パッケージ一覧
+├── .env                # APIキー管理 (Git非推奨)
+├── .gitignore          # venv や .env の除外設定
+├── core/
+│   ├── engine.py       # 新SDK対応・自動モデル探索エンジン
+│   ├── schema.py       # Pydantic V2 データ定義
+│   └── storage.py      # JSON 保存・読込ロジック
+└── data/
+    └── ontology_model.json  # 構築された知識モデル
+
+```
+
+## ⚠️ 注意事項 (2026年版対応)
+
+* **Quota Error (429)**: 無料枠で使用する場合、モデルの制限によりエラーが出ることがあります。その場合は数秒待って再試行してください。
+* **SDK Migration**: 旧 `google-generativeai` は非推奨です。本プロジェクトは最新の `google-genai` に準拠しています。
+
+## 📄 ライセンス
+
+SY
+
+---
+
+**Developed by AI**
+
+```
