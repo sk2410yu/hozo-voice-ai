@@ -38,6 +38,67 @@ pip install -r requirements.txt
 
 ```
 
+仮想環境でのインストール方法
+
+
+本プロジェクトでは、依存ライブラリの衝突を避けるために仮想環境（venv）の使用を推奨します。
+
+### (1-1). 仮想環境の作成
+リポジトリのルートディレクトリで以下を実行します。
+```bash
+# Windows
+python -m venv venv
+
+# Mac / Linux
+python3 -m venv venv
+
+```
+
+### (1-2). 仮想環境の有効化
+
+作成した環境をアクティベートします。
+
+```bash
+# Windows (Command Prompt)
+venv\Scripts\activate
+
+# Windows (PowerShell)
+.\venv\Scripts\Activate.ps1
+
+# Mac / Linux
+source venv/bin/activate
+
+```
+
+※ 成功すると、ターミナルの先頭に `(venv)` と表示されます。
+
+### (1-3). ライブラリのインストール
+
+環境を有効化した状態で、以下を実行して依存関係を解決します。
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+
+```
+
+```
+
+---
+
+### **【エンジニア向けの補足】**
+もし GitHub に上げる際、`.gitignore` に `venv/` を入れ忘れると、数千個のライブラリファイルがアップロードされてしまうから注意してくれ。もし `.gitignore` がなければ、以下の1行を書いたファイルを作っておくと安全だ。
+
+```text
+# .gitignore
+venv/
+.env
+__pycache__/
+*.json
+
+```
+
+
 ### 2. APIキーの設定
 
 ルートディレクトリに `.env` ファイルを作成し、APIキーを記述してください。
